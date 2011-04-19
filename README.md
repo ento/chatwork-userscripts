@@ -1,6 +1,11 @@
 ## About ##
 
 A userscript which integrates Growl notification for ChatWork running as a Fluid site-specific browser.
+When a new message arrives, the script will
+
+ * Show a Growl notification
+ * Change the color of the page header to a nice red
+ * Add a dock icon badge with the number of unread messages
 
 
 ## Usage ##
