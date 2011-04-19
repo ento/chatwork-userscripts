@@ -13,6 +13,6 @@ When a new message arrives, the script will
 First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then,
 
     cd /path/to/somewhere
-    git clone https://github.com/ento/chatwork_growl.user.js.git
-    ln -s /path/to/somewhere/chatwork_growl.user.js/chatwork_growl.user.js/ \
+    git clone https://github.com/ento/chatwork_growl.git
+    ln -s /path/to/somewhere/chatwork_growl.user.js/chatwork_growl/ \
       /Users/<Your username>/Library/Application\ Support/Fluid/SSB/<Your ChatWork Fluid app name>/Userscripts/
