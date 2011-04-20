@@ -33,4 +33,4 @@ Open [the raw script](https://github.com/ento/chatwork_alert/blob/master/chatwor
 
 ## How to install: Safari and Firefox ##
 
-Get GreaseKit if you're on Safari, GreaseMonkey on Firefox, and install [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_growl.user.js) as usual.
+Get GreaseKit if you're on Safari, Greasemonkey on Firefox, and install [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_growl.user.js) as usual.
