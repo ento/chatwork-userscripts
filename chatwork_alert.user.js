@@ -6,6 +6,9 @@
 // @author      Marica Odagaki
 // ==/UserScript==
 
+// Released under the Simplified BSD License.
+
+
 function main() {
     var NORMAL_SECTION_HEADER_BG = "#769D03";
     var ALERT_SECTION_HEADER_BG = "#9D0303";
