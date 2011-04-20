@@ -1,18 +1,19 @@
 // ==UserScript==
-// @name        chatwork_growl
+// @name        chatwork_alert
 // @namespace   http://fluidapp.com
-// @description ChatWork Growl notification for fluid
+// @description Better ChatWork notification. Supports Growl and dock badge when running in Fluid.
 // @include     https://www.chat-work.com/*
 // @author      Marica Odagaki
 // ==/UserScript==
 
-(function () {
+function main() {
     var NORMAL_SECTION_HEADER_BG = "#769D03";
     var ALERT_SECTION_HEADER_BG = "#9D0303";
     var NORMAL_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3F5A86), to(#243553))";
     var ALERT_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#CB5454), to(#7D2F2F))";
+
     function updateAlert() {
-        if (!RL) {
+        if (typeof RL == 'undefined') {
             return;
         }
         var sectionHeaderBackground = NORMAL_SECTION_HEADER_BG;
@@ -23,10 +24,11 @@
             pageHeaderBackground = ALERT_PAGE_HEADER_BG;
         }
 
-        fluid.dockBadge = unreadCount > 0 ? unreadCount : null;
+        updateDockBadge(unreadCount);
 
         var currentBG = $(".tm_header_bg").css("background-image");
         currentBG = replaceRGBWithHex(currentBG);
+
         if(currentBG.toLowerCase() != pageHeaderBackground.toLowerCase()) {
             if (unreadCount > 0) {
                 // rising edge: new message has just arrived
@@ -36,13 +38,20 @@
             $(".tm_header_bg").css("background-image", pageHeaderBackground);
         }
     }
+    function updateDockBadge(unreadCount) {
+        if (window.fluid) {
+            fluid.dockBadge = unreadCount > 0 ? unreadCount : null;
+        }
+    }
     function showGrowlNotification(description) {
-        fluid.showGrowlNotification({
-				title: "ChatWork",
-				description: description,
-				priority: 0,
-				sticky: false
-        });
+        if (window.fluid) {
+            fluid.showGrowlNotification({
+		title: "ChatWork",
+		description: description,
+		priority: 0,
+		sticky: false
+            });
+        }
     }
     function countNewMessages(rooms) {
         var count = 0
@@ -60,11 +69,12 @@
         }
         return "#" + hex(r) + hex(g) + hex(b);
     }
-    if (window.fluid) {
-		// do yer thang!
-        window.updateAlertInterval = setInterval(updateAlert, 1000);
-        for (var i in fluid) {
-            window.console.log(i + ": " + fluid[i]);
-        }
-    }
-})();
+
+    // do yer thang!
+    window.updateAlertInterval = setInterval(updateAlert, 500);
+}
+
+// warp through Chrome's isolated world
+var script = document.createElement('script');
+script.appendChild(document.createTextNode('('+ main +')();'));
+(document.body || document.head || document.documentElement).appendChild(script);
