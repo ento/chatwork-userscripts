@@ -3,11 +3,17 @@
 A userscript for better [ChatWork](http://www.chat-work.com/) notification.
 Supports Growl and dock badge when running in Fluid.
 
+Tested on Fluid and Google Chrome on Mac OS X 10.6.
+
+### Features ###
+
 When a new message arrives, the script will
 
  * Change the color of the page header to a nice red
 
    ![Screenshot of a red page header][1]
+
+### Fluid extras ###
 
  * Show a Growl notification (on Fluid)
 
@@ -20,9 +26,6 @@ When a new message arrives, the script will
 [1]: https://img.skitch.com/20110420-guggcy81fe54jfgnnaik8che8m.png
 [2]: https://img.skitch.com/20110420-8nida44kjaynqxm988fu358cjx.png
 [3]: https://img.skitch.com/20110420-ewruckm161cakrhdin3781484r.png
-
-
-Tested on Fluid and Google Chrome on Mac OS X 10.6.
 
 
 ## How to install: Fluid ##
