@@ -27,7 +27,7 @@ Tested on Fluid and Google Chrome on Mac OS X 10.6.
 
 ## How to install: Fluid ##
 
-First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then add [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_growl.user.js) from the scripts menu.
+First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then add [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) from the scripts menu.
 
 
 ### To install with git goodness ###
@@ -40,9 +40,9 @@ First, create a site-specific browser for ChatWork with [Fluid](http://www.fluid
 
 ## How to install: Google Chrome ##
 
-Open [the raw script](https://github.com/ento/chatwork_alert/blob/master/chatwork_growl.user.js) in your browser and install it. Chrome will automatically convert it into an extension.
+Open [the raw script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) in your browser and install it. Chrome will automatically convert it into an extension.
 
 
 ## How to install: Safari and Firefox ##
 
-Get GreaseKit if you're on Safari, Greasemonkey on Firefox, and install [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_growl.user.js) as usual.
+Get GreaseKit if you're on Safari, Greasemonkey on Firefox, and install [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) as usual.
