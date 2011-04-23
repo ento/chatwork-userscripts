@@ -15,6 +15,8 @@ When a new message arrives, the script will
 
  * Blink the favicon
 
+   ![Screenshot of a red favicon][2]
+
 [1]: https://img.skitch.com/20110420-guggcy81fe54jfgnnaik8che8m.png
 [2]: https://img.skitch.com/20110423-jxj5twftchy175s5ws388pjsiy.png
 
@@ -23,11 +25,11 @@ When a new message arrives, the script will
 
  * Show a Growl notification (on Fluid)
 
-   ![Screenshot of a Growl notification][2]
+   ![Screenshot of a Growl notification][3]
 
  * Add a dock icon badge with the number of unread messages (on Fluid)
 
-   ![Screenshot of a dock icon badge][3]
+   ![Screenshot of a dock icon badge][4]
 
 [3]: https://img.skitch.com/20110420-8nida44kjaynqxm988fu358cjx.png
 [4]: https://img.skitch.com/20110420-ewruckm161cakrhdin3781484r.png
