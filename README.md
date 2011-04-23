@@ -1,4 +1,4 @@
-## About ##
+## About: chatwork_alert ##
 
 A userscript for better [ChatWork](http://www.chat-work.com/) notification.
 Supports Growl and dock badge when running in Fluid.
@@ -33,9 +33,20 @@ When a new message arrives, the script will
 [4]: https://img.skitch.com/20110420-ewruckm161cakrhdin3781484r.png
 
 
+## About: chatwork_ui ##
+
+Another userscript for various user interface enhancements for ChatWork.
+Currently it only includes the following modification:
+
+ * Return focus to the input area immediately after changing rooms and categories.
+
+
 ## How to install: Fluid ##
 
-First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then add [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) from the scripts menu.
+First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then add the scripts ([chatwork_alert][chatwork_alert.user.js], [chatwork_ui][chatwork_ui.user.js]) from the scripts menu.
+
+[chatwork_alert.user.js]: https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js
+[chatwork_ui.user.js]: https://github.com/ento/chatwork_alert/blob/master/chatwork_ui.user.js
 
 
 ### To install with git goodness ###
@@ -48,9 +59,10 @@ First, create a site-specific browser for ChatWork with [Fluid](http://www.fluid
 
 ## How to install: Google Chrome ##
 
-Open [the raw script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) in your browser and install it. Chrome will automatically convert it into an extension.
+Open the raw script ([chatwork_alert][chatwork_alert.user.js], [chatwork_ui][chatwork_ui.user.js]) in your browser and install it. Chrome will automatically convert it into an extension.
+
 
 
 ## How to install: Safari and Firefox ##
 
-Get GreaseKit if you're on Safari, Greasemonkey on Firefox, and install [the script](https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js) as usual.
+Get GreaseKit if you're on Safari, Greasemonkey on Firefox, and install the scripts ([chatwork_alert][chatwork_alert.user.js], [chatwork_ui][chatwork_ui.user.js]) as usual.
