@@ -13,6 +13,12 @@ When a new message arrives, the script will
 
    ![Screenshot of a red page header][1]
 
+ * Blink the favicon
+
+[1]: https://img.skitch.com/20110420-guggcy81fe54jfgnnaik8che8m.png
+[2]: https://img.skitch.com/20110423-jxj5twftchy175s5ws388pjsiy.png
+
+
 ### Fluid extras ###
 
  * Show a Growl notification (on Fluid)
@@ -23,9 +29,8 @@ When a new message arrives, the script will
 
    ![Screenshot of a dock icon badge][3]
 
-[1]: https://img.skitch.com/20110420-guggcy81fe54jfgnnaik8che8m.png
-[2]: https://img.skitch.com/20110420-8nida44kjaynqxm988fu358cjx.png
-[3]: https://img.skitch.com/20110420-ewruckm161cakrhdin3781484r.png
+[3]: https://img.skitch.com/20110420-8nida44kjaynqxm988fu358cjx.png
+[4]: https://img.skitch.com/20110420-ewruckm161cakrhdin3781484r.png
 
 
 ## How to install: Fluid ##
