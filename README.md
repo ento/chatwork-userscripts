@@ -1,6 +1,13 @@
+# ChatWork userscripts #
+
+Quickies: 
+
+ * [chatwork_alert.user.js][chatwork_alert.user.js]
+ * [chatwork_ui.user.js][chatwork_ui.user.js]
+
 ## About: chatwork_alert ##
 
-A userscript for better [ChatWork](http://www.chat-work.com/) notification.
+A userscript for better [ChatWork](http://www.chat-work.com/) notification visibility.
 Supports Growl and dock badge when running in Fluid.
 
 Tested on Fluid and Google Chrome on Mac OS X 10.6.
