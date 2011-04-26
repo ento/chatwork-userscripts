@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        chatwork_alert
-// @version     1.1
+// @version     1.1.1
 // @namespace   http://fluidapp.com
 // @description Better ChatWork notification. Supports Growl and dock badge when running in Fluid.
 // @include     https://www.chat-work.com/*
@@ -137,6 +137,7 @@ docHead:document.getElementsByTagName("head")[0]
     var ALERT_SECTION_HEADER_BG = "#9D0303";
     var NORMAL_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3F5A86), to(#243553))";
     var ALERT_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#CB5454), to(#7D2F2F))";
+    var NORMAL_FAVICON_SRC = $('link[rel="shortcut icon"]').attr("href");
     var ALERT_FAVICON_SRC = 'data:image/png;base64,' +
 		'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADC0lEQVQ4jYWTTWgcdQDFf/+ZndkPMtnd' +
 		'aHa7aXZjuqlBtEpJYWkSUZB66bkVBAm2ED0VRagXhdykXvSSEq2goNC09iQebLEHP0pSKLTRhJZs1tim' +
@@ -152,29 +153,19 @@ docHead:document.getElementsByTagName("head")[0]
 		'04gmk/iOg99osPLlp4tTm7VxIFD+DpDwXWXhCkGriW+aONvbaLpOby5HLN573+w4dNeK2GbteyB4aMrn' +
 		'QW0mOZnIPXUsCEVintXWRo6+2t9aLbJ59af1WGogo3qef++35W+Fa73xep36f84EMAMxHaK7Hgt905/f' +
 		'V9gqXp9r13hPhElHwH/TpvioBz/A/Egq/0Wq54fZKJP/p/0LAq9nQqBdV08AAAAASUVORK5CYII=';
-    var NORMAL_FAVICON_SRC = $('link[rel="shortcut icon"]').attr("href");
 
+    var showingAlert = false;
 
     function updateAlert() {
-        if (typeof RL == 'undefined') {
-            return;
-        }
-        var sectionHeaderBackground = NORMAL_SECTION_HEADER_BG;
-        var pageHeaderBackground = NORMAL_PAGE_HEADER_BG;
-        var unreadCount = countNewMessages(RL.rooms)
-        if (unreadCount > 0) {
-            sectionHeaderBackground = ALERT_SECTION_HEADER_BG;
-            pageHeaderBackground = ALERT_PAGE_HEADER_BG;
-        }
-
+        var unreadCount = getUnreadCount();
         updateDockBadge(unreadCount);
 
-        var currentBG = $(".tm_header_bg").css("background-image");
-        currentBG = replaceRGBWithHex(currentBG);
+        prevShowingAlert = showingAlert;
+        showingAlert = unreadCount > 0;
 
-        if(currentBG.toLowerCase() != pageHeaderBackground.toLowerCase()) {
-            $(".tm_header_bg").css("background-image", pageHeaderBackground);
-            if (unreadCount > 0) {
+        if(showingAlert != prevShowingAlert) {
+            updatePageHeaderBackground(showingAlert);
+            if (showingAlert) {
                 // rising edge: new message has just arrived
                 showGrowlNotification("New message.");
                 startFaviconNotification();
@@ -184,11 +175,25 @@ docHead:document.getElementsByTagName("head")[0]
             }
         }
     }
+
+    function getUnreadCount() {
+        if (typeof RL == 'undefined') {
+            return 0;
+        }
+        return countNewMessages(RL.rooms);
+    }
+
+    function updatePageHeaderBackground(isAlert) {
+        var background =  isAlert ? ALERT_PAGE_HEADER_BG : NORMAL_PAGE_HEADER_BG;
+        $(".tm_header_bg").css("background-image", background);
+    }
+
     function updateDockBadge(unreadCount) {
         if (window.fluid) {
             fluid.dockBadge = unreadCount > 0 ? unreadCount : null;
         }
     }
+
     function showGrowlNotification(description) {
         if (window.fluid) {
             fluid.showGrowlNotification({
@@ -199,16 +204,24 @@ docHead:document.getElementsByTagName("head")[0]
             });
         }
     }
+
     function startFaviconNotification() {
         favicon.animate([ALERT_FAVICON_SRC, NORMAL_FAVICON_SRC], {delay: 1000});
-        setTimeout(showFaviconNotification, 10000);
+        setTimeout(function() {
+            if (showingAlert) {
+                showFaviconNotification();
+            }
+        }, 10000);
     }
+
     function showFaviconNotification() {
         favicon.change(ALERT_FAVICON_SRC);
     }
+
     function hideFaviconNotification() {
         favicon.change(NORMAL_FAVICON_SRC);
     }
+
     function countNewMessages(rooms) {
         var count = 0
         for(var i in rooms) {
@@ -216,18 +229,9 @@ docHead:document.getElementsByTagName("head")[0]
         }
         return count;
     }
-    function replaceRGBWithHex(str) {
-        return str.replace(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/g, rgb2hex);
-    }
-    function rgb2hex(str, r, g, b, offset, s) {
-        function hex(x) {
-            return ("0" + parseInt(x).toString(16)).slice(-2);
-        }
-        return "#" + hex(r) + hex(g) + hex(b);
-    }
 
     // do yer thang!
-    window.updateAlertInterval = setInterval(updateAlert, 500);
+    var updateAlertInterval = setInterval(updateAlert, 500);
 }
 
 // warp through Chrome's isolated world
