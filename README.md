@@ -1,6 +1,13 @@
+# ChatWork userscripts #
+
+Quickies: 
+
+ * [chatwork_alert.user.js][chatwork_alert.user.js]
+ * [chatwork_ui.user.js][chatwork_ui.user.js]
+
 ## About: chatwork_alert ##
 
-A userscript for better [ChatWork](http://www.chat-work.com/) notification.
+A userscript for better [ChatWork](http://www.chat-work.com/) notification visibility.
 Supports Growl and dock badge when running in Fluid.
 
 Tested on Fluid and Google Chrome on Mac OS X 10.6.
@@ -47,15 +54,15 @@ Currently it only includes the following modification:
 
 First, create a site-specific browser for ChatWork with [Fluid](http://www.fluidapp.com/). Then add the scripts ([chatwork_alert][chatwork_alert.user.js], [chatwork_ui][chatwork_ui.user.js]) from the scripts menu.
 
-[chatwork_alert.user.js]: https://github.com/ento/chatwork_alert/blob/master/chatwork_alert.user.js
-[chatwork_ui.user.js]: https://github.com/ento/chatwork_alert/blob/master/chatwork_ui.user.js
+[chatwork_alert.user.js]: https://github.com/ento/chatwork-userscripts/blob/master/chatwork_alert.user.js
+[chatwork_ui.user.js]: https://github.com/ento/chatwork-userscripts/blob/master/chatwork_ui.user.js
 
 
 ### To install with git goodness ###
 
     cd /path/to/somewhere
-    git clone https://github.com/ento/chatwork_alert.git
-    ln -s /path/to/somewhere/chatwork_alert/chatwork_alert.user.js \
+    git clone https://github.com/ento/chatwork-userscripts.git
+    ln -s /path/to/somewhere/chatwork-userscripts/*.user.js \
       /Users/<Your username>/Library/Application\ Support/Fluid/SSB/<Your ChatWork Fluid app name>/Userscripts/
 
 
