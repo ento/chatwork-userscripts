@@ -253,5 +253,7 @@ docHead:document.getElementsByTagName("head")[0]
 
 // warp through Chrome's isolated world
 var script = document.createElement('script');
+script.setAttribute('id', 'chatwork-alert-user-js');
 script.appendChild(document.createTextNode('('+ main +')();'));
 (document.body || document.head || document.documentElement).appendChild(script);
+console.log("chatwork_alert loaded");
