@@ -4,6 +4,7 @@
 // @namespace   http://fluidapp.com
 // @description Better ChatWork notification. Supports Growl and dock badge when running in Fluid.
 // @include     https://www.chat-work.com/*
+// @include     https://www.chatwork.com/*
 // @author      Marica Odagaki
 // ==/UserScript==
 //
