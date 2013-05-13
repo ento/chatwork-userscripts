@@ -134,10 +134,26 @@ docHead:document.getElementsByTagName("head")[0]
 }
 // -- end of favicon.js ---------------------------------------------------------------
 
-    var NORMAL_SECTION_HEADER_BG = "#769D03";
-    var ALERT_SECTION_HEADER_BG = "#9D0303";
-    var NORMAL_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#3F5A86), to(#243553))";
-    var ALERT_PAGE_HEADER_BG = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#CB5454), to(#7D2F2F))";
+    var $globalHeader = $('.globalHeader');
+    var NORMAL_GLOBAL_HEADER_STYLE = {
+      "background":  $globalHeader.css('background'),
+      "border-top-color": $globalHeader.css('border-top-color'),
+      "border-bottom-color": $globalHeader.css('border-bottom-color')
+    };
+    var ALERT_GLOBAL_HEADER_STYLE = {
+      "background":  '#fd0006', // normal: #0058a8
+      "border-top-color": "#fd0006", // normal: #0062bb
+      "border-bottom-color": "#830000" // normal: #002d55
+    };
+    $('<style type="text/css">' + 
+      '.globalHeader.globalHeaderAlert {' +
+      'background:' + ALERT_GLOBAL_HEADER_STYLE['background'] + ';' +
+      'border-top-color:' + ALERT_GLOBAL_HEADER_STYLE['border-top-color'] + ';' +
+      'border-bottom-color:' + ALERT_GLOBAL_HEADER_STYLE['border-bottom-color'] + ';' +
+      '}' +
+      '.globalHeader.globalHeaderAlert:after {' +
+      'border-bottom-color:' + ALERT_GLOBAL_HEADER_STYLE['border-top-color'] + ';' +
+      '}</style>').appendTo($("head"));
     var NORMAL_FAVICON_SRC = $('link[rel="shortcut icon"]').attr("href");
     var ALERT_FAVICON_SRC = 'data:image/png;base64,' +
 		'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADC0lEQVQ4jYWTTWgcdQDFf/+ZndkPMtnd' +
@@ -165,7 +181,7 @@ docHead:document.getElementsByTagName("head")[0]
         showingAlert = unreadCount > 0;
 
         if(showingAlert != prevShowingAlert) {
-            updatePageHeaderBackground(showingAlert);
+            updateGlobalHeaderBackground(showingAlert);
             if (showingAlert) {
                 // rising edge: new message has just arrived
                 showGrowlNotification("New message.");
@@ -184,9 +200,9 @@ docHead:document.getElementsByTagName("head")[0]
         return countNewMessages(RL.rooms);
     }
 
-    function updatePageHeaderBackground(isAlert) {
-        var background =  isAlert ? ALERT_PAGE_HEADER_BG : NORMAL_PAGE_HEADER_BG;
-        $(".tm_header_bg").css("background-image", background);
+    function updateGlobalHeaderBackground(isAlert) {
+        var op =  isAlert ? 'addClass' : 'removeClass';
+        $globalHeader[op]('globalHeaderAlert');
     }
 
     function updateDockBadge(unreadCount) {
@@ -224,7 +240,7 @@ docHead:document.getElementsByTagName("head")[0]
     }
 
     function countNewMessages(rooms) {
-        var count = 0
+        var count = 0;
         for(var i in rooms) {
             count += rooms[i].getUnreadNum();
         }
